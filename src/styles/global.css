@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: #0a0a0f;
+  --black-light: #12121a;
+  --dark-blue: #0d1b2a;
+  --navy: #1b2838;
+  --blue: #1e3a5f;
+  --blue-accent: #2d6bcf;
+  --blue-glow: #4a90e2;
+  --silver: #b8c4d0;
+  --silver-light: #d4dce6;
+  --silver-dark: #8a96a3;
+  --white: #f0f4f8;
+  --red: #e74c3c;
+  --green: #2ecc71;
+  --gold: #f0b90b;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--black);
+  color: var(--silver);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SHARED CLASSES ─── */
+.app {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--black) 0%, var(--dark-blue) 50%, var(--black) 100%);
+}
+
+.main {
+  padding: 76px 16px 100px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) { .main { padding: 84px 32px 60px; } }
+@media (min-width: 1200px) { .main { padding: 84px 48px 60px; } }
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: var(--silver-dark);
+}
+
+.card {
+  background: linear-gradient(145deg, rgba(27, 40, 56, 0.6), rgba(13, 27, 42, 0.4));
+  border: 1px solid rgba(184, 196, 208, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s;
+}
+
+.card:hover {
+  border-color: rgba(74, 144, 226, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
+}
+
+.animate-delay-1 { animation-delay: 0.05s; }
+.animate-delay-2 { animation-delay: 0.1s; }
+.animate-delay-3 { animation-delay: 0.15s; }
+.animate-delay-4 { animation-delay: 0.2s; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(184, 196, 208, 0.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(184, 196, 208, 0.25); }

@@ -1,0 +1,45 @@
+name: Atualizar Dados
+
+on:
+  # Roda 2x/dia: 9h e 21h (horário de Brasília = 12h e 00h UTC)
+  schedule:
+    - cron: '0 12 * * *'  # 09:00 BRT
+    - cron: '0 0 * * *'   # 21:00 BRT
+
+  # Permite rodar manualmente pelo GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Buscar dados das APIs
+        env:
+          GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
+        run: node scripts/fetch-data.mjs
+
+      - name: Verificar mudanças
+        id: changes
+        run: |
+          git diff --quiet public/data/ && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit e Push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/
+          git commit -m "📊 Dados atualizados $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

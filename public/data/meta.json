@@ -1,0 +1,11 @@
+{
+  "last_update": null,
+  "sources": {
+    "crypto": "CoinGecko",
+    "metals": "Metal Price API",
+    "exchanges": "Yahoo Finance",
+    "currencies": "Frankfurter.app",
+    "news": "GNews"
+  },
+  "note": "Dados iniciais serão gerados pelo primeiro run do GitHub Actions"
+}
