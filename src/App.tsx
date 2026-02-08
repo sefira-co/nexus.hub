@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from './components/Layout/Header';
 import Ticker from './components/Layout/Ticker';
+import MarqueeTicker from './components/Layout/MarqueeTicker';
 import NewsSection from './components/News/NewsSection';
 import QuotesSection from './components/Quotes/QuotesSection';
 import ReportsSection from './components/Reports/ReportsSection';
@@ -28,7 +29,10 @@ export default function App() {
   return (
     <div className="app">
       <Header activeSection={activeSection} onNavigate={setActiveSection} />
-      <Ticker />
+      <div style={{ marginTop: 60 }}>
+        <MarqueeTicker />
+        <Ticker />
+      </div>
       <main className="main" key={activeSection}>
         {renderSection()}
       </main>
