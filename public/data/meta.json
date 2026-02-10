@@ -1,11 +1,10 @@
 {
-  "last_update": null,
+  "last_update": "2026-02-10T01:53:28.647Z",
   "sources": {
     "crypto": "CoinGecko",
-    "metals": "Metal Price API",
+    "metals": "Metal Price API / GoldAPI",
     "exchanges": "Yahoo Finance",
     "currencies": "Frankfurter.app",
     "news": "GNews"
-  },
-  "note": "Dados iniciais serão gerados pelo primeiro run do GitHub Actions"
+  }
 }
